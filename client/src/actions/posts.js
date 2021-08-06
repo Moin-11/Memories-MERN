@@ -17,5 +17,3 @@ export const createPost = (post) => async (dispatch) => {
     console.log(error.message);
   }
 };
-
-//A Fullstack MERN app that utilize redux and material UI to create a social media-esque application for storing your memorable moments
