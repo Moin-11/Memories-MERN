@@ -50,12 +50,7 @@ const Post = ({ post, setcurrentId }) => {
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
       </div>
-      <Typography
-        className={classes.title}
-        gutterBottom
-        variant="h5"
-        component="h2"
-      >
+      <Typography className={classes.title} gutterBottom variant="h5">
         {post.title}
       </Typography>
       <CardContent>
@@ -67,9 +62,12 @@ const Post = ({ post, setcurrentId }) => {
         <Button
           size="small"
           color="primary"
-          onClick={() => dispatch(likePost(post._id))}
+          onClick={() => {
+            dispatch(likePost(post._id));
+            console.log("pressed");
+          }}
         >
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
         </Button>
         <Button
           size="small"

@@ -19,6 +19,7 @@ const Form = ({ currentId, setcurrentId }) => {
     message: "",
     tags: "",
     selectedFile: "",
+    likeCount: 0,
   });
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Form = ({ currentId, setcurrentId }) => {
       message: "",
       tags: "",
       selectedFile: "",
+      likeCount: 0,
     });
   };
   return (
