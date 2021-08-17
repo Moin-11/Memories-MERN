@@ -31,7 +31,7 @@ export const updatePost = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send("not valid ID");
 
-  const updatedPost = await PostMessage.findById(
+  const updatedPost = await PostMessage.findByIdAndUpdate(
     _id,
     { ...post, _id },
     { new: true }
@@ -49,4 +49,17 @@ export const deletePost = async (req, res) => {
   await PostMessage.findByIdAndRemove(_id);
   console.log("DELETE");
   res.json({ message: "deleted successfully" });
+};
+
+export const likePost = async (req, res) => {
+  const { id } = req.params;
+
+  const post = await PostMessage.findById(id);
+  const updatedPost = await PostMessage.findByIdAndUpdate(
+    id,
+    { likeCount: post.likeCount + 1 },
+    { new: true }
+  );
+
+  res.json(updatedPost);
 };
