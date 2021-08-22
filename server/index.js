@@ -2,7 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-import postroutes from "../server/routes/posts.js";
+
+import postroutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
+
 import dotenv from "dotenv";
 
 const app = express();
