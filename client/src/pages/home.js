@@ -7,7 +7,7 @@ import Posts from "../components/posts/index";
 import Form from "../components/form/form";
 
 const Home = () => {
-  const [currentId, setCurrentId] = useState(0);
+  const [currentId, setcurrentId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,10 +24,10 @@ const Home = () => {
           spacing={3}
         >
           <Grid item xs={12} sm={7}>
-            <Posts setCurrentId={setCurrentId} />
+            <Posts setcurrentId={setcurrentId} />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Form currentId={currentId} setCurrentId={setCurrentId} />
+            <Form currentId={currentId} setcurrentId={setcurrentId} />
           </Grid>
         </Grid>
       </Container>
