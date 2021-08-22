@@ -1,9 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
-import { EXPERIMENTAL_FEATURE_WEB_FLEX_BASIS } from "yoga-layout";
-
-import User from "../models/userProfile";
+import User from "../models/userProfile.js";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
