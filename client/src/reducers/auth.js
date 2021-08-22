@@ -1,7 +1,7 @@
 import { AUTH, LOGOUT } from "../constants/actionTypes";
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (state = [], action) => {
+export default (state = { authData: null }, action) => {
   switch (action.type) {
     case AUTH: {
       localStorage.setItem(`profile`, JSON.stringify({ ...action?.data }));

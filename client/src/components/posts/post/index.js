@@ -40,14 +40,14 @@ const Post = ({ post, setCurrentId }) => {
           &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
         </>
       );
+    } else {
+      return (
+        <>
+          <ThumbUpAltOutlined fontSize="small" />
+          &nbsp;Like
+        </>
+      );
     }
-
-    return (
-      <>
-        <ThumbUpAltOutlined fontSize="small" />
-        &nbsp;Like
-      </>
-    );
   };
 
   return (
