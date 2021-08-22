@@ -7,9 +7,9 @@ import {
   Button,
   Typography,
 } from "@material-ui/core/";
-import ThumbUpAltIcon from "@material-ui/core/Icon/Icon";
-import DeleteIcon from "@material-ui/core/Icon/Icon";
-import MoreHorizIcon from "@material-ui/core/Icon/Icon";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import DeleteIcon from "@material-ui/icons/Delete";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
