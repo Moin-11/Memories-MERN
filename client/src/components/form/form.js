@@ -7,14 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts.js";
 
 const Form = ({ currentId, setcurrentId }) => {
+  const user = JSON.parse(localStorage.getItem(`profile`));
+
   const post = useSelector((state) =>
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
-
   const classes = useStyles();
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
-    creator: "",
     title: "",
     message: "",
     tags: "",
@@ -31,9 +31,11 @@ const Form = ({ currentId, setcurrentId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId) {
-      dispatch(updatePost(currentId, postData));
+      dispatch(
+        updatePost(currentId, { ...postData, name: user?.result?.name })
+      );
     } else {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
     }
     clear();
   };
@@ -41,7 +43,6 @@ const Form = ({ currentId, setcurrentId }) => {
   const clear = () => {
     setcurrentId(null);
     setPostData({
-      creator: "",
       title: "",
       message: "",
       tags: "",
@@ -49,7 +50,15 @@ const Form = ({ currentId, setcurrentId }) => {
       likeCount: 0,
     });
   };
-  return (
+
+  return !user?.result?.name ? (
+    <Paper className={classes.paper}>
+      <Typography variant="h6" align="center">
+        Please Sign in to Create your Memories and Interact with others
+        Memories!
+      </Typography>
+    </Paper>
+  ) : (
     <Paper className={classes.paper}>
       <form
         autoComplete="off"
@@ -60,16 +69,6 @@ const Form = ({ currentId, setcurrentId }) => {
         <Typography variant="h6">
           {currentId ? "Editing" : "Creating"} a Memory
         </Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        ></TextField>
         <TextField
           name="title"
           variant="outlined"
